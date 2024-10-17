@@ -45,8 +45,6 @@ def train(model, device, train_loader,optimizer):
         acc_total = train_acc / len(train_loader.dataset)
         acc_items.append(acc_total)
         
-        if batch_idx % 50 == 0:
-            print(f'Train Epoch: {batch_idx} \n Loss: {loss.item()} \n Acurracy: {acc_total}')
             
     return loss_items,current_epoch, acc_items
 
@@ -76,7 +74,8 @@ def test(model, device, test_loader):
     test_loss /= len(test_loader.dataset)
     correct /= len(test_loader.dataset)
     
-    print(f'Test Loss: {test_loss} \n Acurracy {correct}')
+    print(f'Test Loss: {test_loss} \nAcurracy: {correct}')
+    return test_loss,correct
     
 def loss_graph(loss_items,final_epoch):
     x = list(range(1, final_epoch+2))
